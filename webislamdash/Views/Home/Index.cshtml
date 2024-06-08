@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="overflow-x: auto; white-space: nowrap; text-align: center;">
+    @for (int i = 1; i <= 604; i++)
+    {
+        <button id="page-button-@i" class="page-button" onclick="fetchPage(@i)" style="display: inline-block;">Page @i</button>
+    }
+</div>
+
+<div style="display: flex;">
+    <div id="bookmarksList" style="flex: 1;">
+        <h2>Bookmarked Pages</h2>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <p>Log in to use the bookmark feature</p>
+        }
+        <ul>
+        </ul>
+    </div>
+    <div id="quranPage" style="flex: 3;">
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var bookmarks = [];
+
+        async function fetchBookmarks() {
+            const response = await fetch('/Quran/GetBookmarks');
+            if (response.ok) {
+                bookmarks = await response.json();
+                renderBookmarks();
+            } else {
+                console.error(`Error: ${response.status}`);
+            }
+            return Promise.resolve();
+        }
+
+        async function toggleBookmark(pageNumber) {
+            const bookmarkIndex = bookmarks.findIndex(b => b === pageNumber);
+            let response;
+            if (bookmarkIndex === -1) {
+                response = await fetch('/Quran/Bookmark', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ pageNumber: pageNumber })
+                });
+            } else {
+                response = await fetch('/Quran/RemoveBookmark', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ pageNumber: pageNumber })
+                });
+            }
+            if (response.ok) {
+                await fetchBookmarks();
+                updateBookmarkButton(pageNumber);
+            } else {
+                console.error(`Error: ${response.status}`);
+            }
+        }
+
+        function renderBookmarks() {
+            var bookmarksList = document.getElementById('bookmarksList').querySelector('ul');
+            bookmarksList.innerHTML = '';
+            bookmarks
+                .sort((a, b) => a - b)
+                .forEach(pageNumber => {
+                    var bookmarkItem = document.createElement('li');
+                    var bookmarkLink = document.createElement('a');
+                    bookmarkLink.href = "#";
+                    bookmarkLink.textContent = 'Page ' + pageNumber;
+                    bookmarkLink.onclick = function () {
+                        fetchPage(pageNumber);
+                    };
+                    bookmarkItem.appendChild(bookmarkLink);
+                    bookmarksList.appendChild(bookmarkItem);
+                });
+        }
+
+        async function fetchPage(pageNumber) {
+            const buttons = document.querySelectorAll('.page-button');
+            buttons.forEach(button => button.classList.remove('button-active'));
+            const clickedButton = document.getElementById(`page-button-${pageNumber}`);
+            clickedButton.classList.add('button-active');
+            const response = await fetch(`/Quran/Index?pageNumber=${pageNumber}`);
+            if (response.ok) {
+                const data = await response.text();
+                document.getElementById('quranPage').innerHTML = data;
+                updateBookmarkButton(pageNumber);
+                clickedButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                console.error(`Error: ${response.status}`);
+            }
+        }
+
+        function updateBookmarkButton(pageNumber) {
+            const bookmarkIndex = bookmarks.findIndex(b => b === pageNumber);
+            const bookmarkButton = document.getElementById('bookmark-button');
+            if (bookmarkIndex === -1) {
+                bookmarkButton.textContent = 'Bookmark';
+            } else {
+                bookmarkButton.textContent = 'Remove Bookmark';
+            }
+        }
+
+        fetchBookmarks(); // Fetch the bookmarks when the page loads
+        fetchPage(1);
+    </script>
+}

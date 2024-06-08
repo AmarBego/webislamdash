@@ -1,0 +1,53 @@
+﻿@model IEnumerable<webislamdash.Models.Prayer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrayerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrayerTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrayerDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrayerLocation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerLocation)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PrayerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PrayerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PrayerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
