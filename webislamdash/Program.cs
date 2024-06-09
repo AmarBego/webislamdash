@@ -16,6 +16,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<QuranApiService>();
 builder.Services.AddHttpClient<CalendarService>();
+builder.Services.AddHttpClient<IPrayerTimeService, PrayerTimeService>();
 
 var app = builder.Build();
 

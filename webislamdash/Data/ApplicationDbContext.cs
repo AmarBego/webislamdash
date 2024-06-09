@@ -10,7 +10,6 @@ namespace webislamdash.Data
             : base(options)
         {
         }
-        public DbSet<webislamdash.Models.Prayer> Prayer { get; set; } = default!;
         public DbSet<Bookmark> Bookmarks { get; set; }
     }
 }

@@ -1,0 +1,80 @@
+﻿@model List<PrayerTime>
+
+<h1>Prayer Times</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Fajr</th>
+            <th>Sunrise</th>
+            <th>Dhuhr</th>
+            <th>Asr</th>
+            <th>Sunset</th>
+            <th>Maghrib</th>
+            <th>Isha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prayerTime in Model)
+        {
+            <tr class="@(prayerTime.Date.Date == DateTime.Today.Date ? "today" : "")">
+                <td>@prayerTime.Date.ToShortDateString()</td>
+                <td>@prayerTime.Fajr</td>
+                <td>@prayerTime.Sunrise</td>
+                <td>@prayerTime.Dhuhr</td>
+                <td>@prayerTime.Asr</td>
+                <td>@prayerTime.Sunset</td>
+                <td>@prayerTime.Maghrib</td>
+                <td>@prayerTime.Isha</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #555555;
+        background-color: #333333;
+        color: white;
+    }
+
+    thead {
+        background-color: #555555;
+    }
+
+    th {
+        padding: 10px;
+    }
+
+    tbody {
+        border-top: 2px solid #555555;
+    }
+
+    tr {
+        transition: background-color 0.3s;
+    }
+
+        tr:hover {
+            background-color: #666666;
+        }
+
+    td {
+        padding: 10px;
+        border: 1px solid #555555;
+    }
+
+    .today td {
+        outline: 2px solid orange;
+    }
+
+    td:nth-child(9) {
+        background-color: #258cfb;
+    }
+
+    .today {
+        outline: 2px solid orange;
+    }
+</style>
