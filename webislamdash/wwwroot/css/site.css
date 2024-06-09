@@ -24,6 +24,86 @@ body {
     color: white;
 }
 
+
+/* Footer&Header Styles */
+.border-top {
+    border-top-color: orange !important;
+}
+.border-bottom {
+    border-bottom-color: orange !important;
+}
+.footer a {
+    color: orange !important;
+}
+
+.footer {
+    background-color: #1E1E1E;
+}
+
+
+/* Navbar Styles */
+.navbar {
+    background-color: #1E1E1E !important;
+    color: white !important;
+}
+.navbar-brand {
+    color: white !important;
+}
+.navbar-nav .nav-link {
+    color: white !important;
+}
+    .navbar-nav .nav-link:hover {
+        color: orange !important;
+    }
+.navbar-nav .nav-item.active .nav-link {
+    color: orange !important;
+    background-color: darkorange !important;
+}
+
+
+/* Button Styles */
+.btn-primary {
+    background-color: darkorange;
+    border-color: darkorange;
+    color: white !important;
+}
+    .btn-primary:hover {
+        background-color: orange;
+        border-color: orange;
+    }
+    .btn-primary:focus,
+    .btn-primary.focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.5);
+    }
+    .btn-primary.disabled,
+    .btn-primary:disabled {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+
+/* Custom Nav Link Styles */
+.nav-pills .nav-link {
+    color: orange;
+}
+    .nav-pills .nav-link.active {
+        color: white !important;
+        background-color: darkorange;
+    }
+
+div a {
+    color: orange !important;
+}
+
+.form-floating label {
+    color: #444;
+}
+
+.form-floating input {
+    color: #444;
+}
+
+/* Quran Page & Bookmarks*/
 .page-container {
     overflow-x: auto;
     white-space: nowrap;
@@ -42,155 +122,72 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s;
 }
-
     .page-button:hover {
         background-color: #666666;
     }
-
     .page-button:active, .page-button.button-active {
         background-color: orange;
         color: white;
     }
-
-
 .page-container::-webkit-scrollbar {
     height: 12px;
 }
-
 .page-container::-webkit-scrollbar-track {
     background: #282828;
 }
-
 .page-container::-webkit-scrollbar-thumb {
-    background-color: #555555;
+    background-color: orange;
     border-radius: 6px;
     border: 3px solid #282828;
 }
-
     .page-container::-webkit-scrollbar-thumb:hover {
-        background-color: #666666;
+        background-color: darkorange;
     }
-
 #bookmarksList {
     padding: 20px;
     background-color: #333333;
     border-radius: 8px;
     margin-right: 10px;
 }
-
 .bookmarked-pages {
     list-style: none;
     padding: 0;
 }
-
     .bookmarked-pages li {
         margin-bottom: 10px;
     }
-
         .bookmarked-pages li a {
             color: orange;
             text-decoration: none;
             transition: color 0.3s, text-decoration 0.3s;
         }
-
             .bookmarked-pages li a:hover {
                 color: orange;
                 text-decoration: underline;
             }
-
 #quranPage {
     padding: 20px;
     background-color: #333333;
     border-radius: 8px;
     margin-right: 10px;
 }
-
-
 .bookmark-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #555555;
+    background-color: darkorange;
+    border-color: darkorange;
     color: white;
-    border: none;
     border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
 }
-
     .bookmark-button:hover {
-        background-color: #666666;
-    }
-
-    .bookmark-button:active {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: orange;
+        border-color: orange;
     }
 
 .add-bookmark {
     background-color: #258cfb;
 }
-
 .remove-bookmark {
     background-color: orange;
 }
-
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1em;
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navigation {
-    display: flex;
-    align-items: center;
-}
-
-
-.day {
-    border: 1px solid #ccc;
-    padding: 1em;
-    text-align: center;
-}
-
-.today {
-    border: 0px;
-    outline: 2px solid orange;
-}
-
-.arrow-button {
-    background-color: transparent;
-    color: orange;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-    .arrow-button:hover {
-        color: darkorange;
-    }
-
-.current-month-button {
-    top: 10px;
-    right: 10px;
-    background-color: #555555;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-    .current-month-button:hover {
-        background-color: #666666;
-    }
-
-    .current-month-button:active {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }

@@ -13,14 +13,19 @@
         <p>
             <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
         </p>
-        <form id="download-data" asp-page="DownloadPersonalData" method="post">
-            <button class="btn btn-primary" type="submit">Download</button>
-        </form>
-        <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
-        </p>
+        <div class="d-flex justify-content-between">
+            <!-- Use flexbox to align buttons -->
+            <form id="download-data" asp-page="DownloadPersonalData" method="post">
+                <button class="btn btn-primary" type="submit">Download</button>
+            </form>
+            <form asp-page="DeletePersonalData" method="post">
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

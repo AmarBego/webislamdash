@@ -2,13 +2,20 @@
 
 <h1>Enter a city</h1>
 
-<form method="post" action="@Url.Action("Index", "Prayer")">
-    <label for="city">City:</label>
-    <input type="text" id="city" name="city" required>
-
-    <label for="country">Country:</label>
-    <input type="text" id="country" name="country" required">
-
-    <button type="submit">Submit</button>
+<form method="post" action="@Url.Action("Index", "Prayer")" class="row g-3">
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control form-control-sm" id="city" name="city" required>
+            <label for="city">City:</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control form-control-sm" id="country" name="country" required>
+            <label for="country">Country:</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>
-
