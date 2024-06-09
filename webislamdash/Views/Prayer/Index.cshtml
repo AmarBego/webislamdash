@@ -1,6 +1,11 @@
-﻿@model List<PrayerTime>
+﻿@model (List<PrayerTime> prayerTimes, string city, string country)
 
-<h1>Prayer Times</h1>
+<div class="prayer-times-header">
+    <h1>Prayer Times for @Model.city, @Model.country</h1>
+    <form method="post" action="@Url.Action("ChangeCity", "Prayer")">
+        <button type="submit">Change City</button>
+    </form>
+</div>
 
 <table>
     <thead>
@@ -16,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var prayerTime in Model)
+        @foreach (var prayerTime in Model.prayerTimes)
         {
             <tr class="@(prayerTime.Date.Date == DateTime.Today.Date ? "today" : "")">
                 <td>@prayerTime.Date.ToShortDateString()</td>
@@ -31,6 +36,7 @@
         }
     </tbody>
 </table>
+
 
 <style>
     table {
@@ -76,5 +82,11 @@
 
     .today {
         outline: 2px solid orange;
+    }
+
+    .prayer-times-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 </style>

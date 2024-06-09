@@ -2,12 +2,13 @@
 
 <h1>Enter a city</h1>
 
-<form method="post" action="/Prayer/Index">
+<form method="post" action="@Url.Action("Index", "Prayer")">
     <label for="city">City:</label>
     <input type="text" id="city" name="city" required>
 
     <label for="country">Country:</label>
-    <input type="text" id="country" name="country">
+    <input type="text" id="country" name="country" required">
 
     <button type="submit">Submit</button>
 </form>
+

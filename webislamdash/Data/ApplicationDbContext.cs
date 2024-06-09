@@ -11,5 +11,6 @@ namespace webislamdash.Data
         {
         }
         public DbSet<Bookmark> Bookmarks { get; set; }
+        public DbSet<CityInfo> CityInfos { get; set; }
     }
 }
