@@ -52,15 +52,6 @@ body {
         color: white;
     }
 
-.blink {
-    animation: blink 1s steps(5, start) infinite;
-}
-
-@keyframes blink {
-    to {
-        visibility: hidden;
-    }
-}
 
 .page-container::-webkit-scrollbar {
     height: 12px;
@@ -142,3 +133,65 @@ body {
 .remove-bookmark {
     background-color: orange;
 }
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1em;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+
+.day {
+    border: 1px solid #ccc;
+    padding: 1em;
+    text-align: center;
+}
+
+.today {
+    border: 0px;
+    outline: 2px solid orange;
+}
+
+.arrow-button {
+    background-color: transparent;
+    color: orange;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .arrow-button:hover {
+        color: darkorange;
+    }
+
+.current-month-button {
+    top: 10px;
+    right: 10px;
+    background-color: #555555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .current-month-button:hover {
+        background-color: #666666;
+    }
+
+    .current-month-button:active {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
