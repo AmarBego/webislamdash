@@ -27,7 +27,6 @@ namespace webislamdash.Models
         public string EnglishName { get; set; }
         public string EnglishNameTranslation { get; set; }
         public string RevelationType { get; set; }
-        public int NumberOfAyahs { get; set; }
     }
 }
 

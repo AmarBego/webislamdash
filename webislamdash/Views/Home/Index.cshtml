@@ -2,10 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div style="overflow-x: auto; white-space: nowrap; text-align: center;">
+<div class="page-container">
     @for (int i = 1; i <= 604; i++)
     {
-        <button id="page-button-@i" class="page-button" onclick="fetchPage(@i)" style="display: inline-block;">Page @i</button>
+        <button id="page-button-@i" class="page-button" onclick="fetchPage(@i)">Page @i</button>
     }
 </div>
 
@@ -16,7 +16,7 @@
         {
             <p>Log in to use the bookmark feature</p>
         }
-        <ul>
+        <ul class="bookmarked-pages">
         </ul>
     </div>
     <div id="quranPage" style="flex: 3;">
